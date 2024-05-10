@@ -36,6 +36,18 @@ if(F){
     group_by(state_fips) %>%
     count() %>%
     collect()
+  temp_data_3 <- db %>%
+    filter(state_fips %in% 42) %>%
+    group_by(state_fips,county_fips,tract_fips, year) %>%
+    count() %>%
+    collect()
+  table(temp_data_3$county_fips, temp_data_3$year)
+  temp_data_4 <- db %>%
+    filter(state_fips %in% "08", county_fips %in% "014") %>%
+    group_by(state_fips,county_fips,tract_fips, year) %>%
+    count() %>%
+    collect()
+  table(temp_data_3$county_fips, temp_data_3$year)
 }
 
 
